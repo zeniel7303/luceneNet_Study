@@ -27,6 +27,18 @@
             
             search.Search("정신력 증가", "물리 공격력 증가");
             search.Search("정신력 증가", "마법 공격력 증가");
+
+            // value1의 수치가 5이상 10이하인 아이템 검색
+            search.SearchByRange(5, 10, "value1");
+
+            // 2번째 옵션이 "물리 공격력 증가" 이고 수치가 5이상 10이하인 아이템 검색
+            search.SearchByOptionAndRange(2, "물리 공격력 증가", 5, 10);
+
+            search.SearchByOptions(new List<(string optionName, int minValue, int maxValue)>
+            {
+                ("힘 증가", 10, 20),        // 첫 번째 옵션: 힘 증가, 범위 10~20
+                ("물리 공격력 증가", 5, 15)  // 두 번째 옵션: 물리 공격력 증가, 범위 5~15
+            });
         }
     }
 }
