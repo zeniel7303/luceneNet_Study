@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\RnD\\lucenenet_study\\lucenenet_study.csproj": {}
+    "E:\\MyProject\\luceneNet_Study\\lucenenet_study\\lucenenet_study.csproj": {}
   },
   "projects": {
-    "E:\\RnD\\lucenenet_study\\lucenenet_study.csproj": {
+    "E:\\MyProject\\luceneNet_Study\\lucenenet_study\\lucenenet_study.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\RnD\\lucenenet_study\\lucenenet_study.csproj",
+        "projectUniqueName": "E:\\MyProject\\luceneNet_Study\\lucenenet_study\\lucenenet_study.csproj",
         "projectName": "lucenenet_study",
-        "projectPath": "E:\\RnD\\lucenenet_study\\lucenenet_study.csproj",
+        "projectPath": "E:\\MyProject\\luceneNet_Study\\lucenenet_study\\lucenenet_study.csproj",
         "packagesPath": "C:\\Users\\Dohyun\\.nuget\\packages\\",
-        "outputPath": "E:\\RnD\\lucenenet_study\\obj\\",
+        "outputPath": "E:\\MyProject\\luceneNet_Study\\lucenenet_study\\obj\\",
         "projectStyle": "PackageReference",
         "UsingMicrosoftNETSdk": false,
         "fallbackFolders": [

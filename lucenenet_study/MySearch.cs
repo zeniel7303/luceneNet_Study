@@ -46,7 +46,7 @@ public class MySearch
 
         var counts = new int[items.Length];
         var random = new Random();
-        for (var i = 0; i < 1000; i++)
+        for (var i = 0; i < 100000; i++)
         {
             var index = random.Next(items.Length);
             var item = items[index];

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lucenenet_study")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9a23dd8ce5a22f4b7525976b43bcea854b3f842")]
 [assembly: System.Reflection.AssemblyProductAttribute("lucenenet_study")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lucenenet_study")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
