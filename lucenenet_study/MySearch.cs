@@ -46,7 +46,7 @@ public class MySearch
 
         var counts = new int[items.Length];
         var random = new Random();
-        for (var i = 0; i < 1000000; i++)
+        for (var i = 0; i < 10000; i++)
         {
             var index = random.Next(items.Length);
             var item = items[index];
@@ -160,9 +160,9 @@ public class MySearch
         }
     }
 
-    public void SearchByRange(int minValue, int maxValue, string option)
+    public void SearchByRange(int optionIndex, int minValue, int maxValue) // option을 string에서 int로 변경
     {
-        Console.WriteLine($"범위 검색: {option} {minValue}~{maxValue}");
+        Console.WriteLine($"범위 검색: option{optionIndex} {minValue}~{maxValue}"); // 출력 메시지 수정
         var stopwatch = System.Diagnostics.Stopwatch.StartNew();
         
         _searchManager.MaybeRefreshBlocking();
@@ -173,7 +173,7 @@ public class MySearch
             var booleanQuery = new BooleanQuery();
             
             // 옵션에 따라 검색할 필드 선택
-            var valueField = option.Contains('1') ? "value1" : "value2";
+            var valueField = $"value{optionIndex}"; // optionIndex에 따라 valueField 선택
 
             // 범위 쿼리 생성
             var rangeQuery = NumericRangeQuery.NewInt64Range(

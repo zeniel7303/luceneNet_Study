@@ -9,7 +9,7 @@
             search.Index();
             Console.WriteLine($"세팅 종료 \n");
 
-            search.Search("롱 소");
+            /*search.Search("롱 소");
             search.Search("스퉤프");
             search.Search("리공");
             search.Search("리 공");
@@ -26,10 +26,10 @@
             search.Search("지능 증가", "마법 공격력 증가");
             
             search.Search("정신력 증가", "물리 공격력 증가");
-            search.Search("정신력 증가", "마법 공격력 증가");
+            search.Search("정신력 증가", "마법 공격력 증가");*/
 
-            // value1의 수치가 5이상 10이하인 아이템 검색
-            search.SearchByRange(5, 10, "value1");
+            // 옵션1의 수치가 5이상 10이하인 아이템 검색
+            search.SearchByRange(1, 5, 10);
 
             // 2번째 옵션이 "물리 공격력 증가" 이고 수치가 5이상 10이하인 아이템 검색
             search.SearchByOptionAndRange(2, "물리 공격력 증가", 5, 10);
