@@ -34,7 +34,7 @@ public class MySearchV2
         _queryParser = new MultiFieldQueryParser(luceneVersion, fields, new StandardAnalyzer(luceneVersion));
     }
     
-    public void Index()
+    public void Index(int num)
     {
         var stopwatch = System.Diagnostics.Stopwatch.StartNew();
         
@@ -48,7 +48,7 @@ public class MySearchV2
 
         var counts = new int[items.Length];
         var random = new Random();
-        for (var i = 0; i < 100; i++)
+        for (var i = 0; i < num; i++)
         {
             var index = random.Next(items.Length);
             var item = items[index];

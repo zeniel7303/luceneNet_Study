@@ -47,7 +47,7 @@
         {
             var search = new MySearch(Path.Combine(Environment.CurrentDirectory, "index1"));
 
-            search.Index();
+            search.Index(1_000_000);
             
             search.Search("롱 소");
             search.Search("물리 공격");
@@ -67,7 +67,7 @@
         {
             var searchV2 = new MySearchV2(Path.Combine(Environment.CurrentDirectory, "index2"));
 
-            searchV2.Index();
+            searchV2.Index(1_000_000);
             
             searchV2.SearchWithName("롱 소");
             searchV2.SearchWithOption("물리 공격");

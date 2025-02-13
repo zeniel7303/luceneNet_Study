@@ -34,8 +34,10 @@ public class MySearch
         _queryParser = new MultiFieldQueryParser(luceneVersion, fields, new StandardAnalyzer(luceneVersion));
     }
     
-    public void Index()
+    public void Index(int num)
     {
+        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+        
         var items = new[]
         {
             new[] { "롱 소드", "힘 증가", "10", "물리 공격력 증가", "12" },
@@ -46,7 +48,7 @@ public class MySearch
 
         var counts = new int[items.Length];
         var random = new Random();
-        for (var i = 0; i < 10000; i++)
+        for (var i = 0; i < num; i++)
         {
             var index = random.Next(items.Length);
             var item = items[index];
@@ -62,6 +64,9 @@ public class MySearch
         _writer.Commit();
         
         Console.WriteLine($"세팅 종료 \n");
+        
+        stopwatch.Stop(); // 수행 시간 측정 종료
+        Console.WriteLine($"Search execution time: {stopwatch.ElapsedMilliseconds} ms \n");
     }
 
     private void AddDocument(string id, string name, string option1, int value1, string option2, int value2)
