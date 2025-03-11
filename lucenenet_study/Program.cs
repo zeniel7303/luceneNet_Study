@@ -41,14 +41,24 @@
             Console.WriteLine(" ********************************************************************************** ");
 
             TempFunc2();
+            
+            Console.WriteLine(" ********************************************************************************** ");
+
+            TempFunc3();
         }
         
         private static void TempFunc1()
         {
-            var search = new MySearch(Path.Combine(Environment.CurrentDirectory, "index1"));
-
-            search.Index(1_000_000);
+            for (var i = 0; i < 5; i++)
+            {
+                var search = new MySearch(Path.Combine(Environment.CurrentDirectory, $"index0{i}"));
+                search.Index(1_000_000);
+            }
             
+#if FALSE
+            var search = new MySearch(Path.Combine(Environment.CurrentDirectory, "index1"));
+            search.Index(1_000_000);
+
             search.Search("롱 소");
             search.Search("물리 공격");
             search.Search("힘 증가", "물리 공격력 증가");
@@ -61,14 +71,19 @@
                 ("힘 증가", 10, 20),        // 첫 번째 옵션: 힘 증가, 범위 10~20
                 ("물리 공격력 증가", 5, 15)  // 두 번째 옵션: 물리 공격력 증가, 범위 5~15
             });
+
+#endif
         }
 
         private static void TempFunc2()
         {
-            var searchV2 = new MySearchV2(Path.Combine(Environment.CurrentDirectory, "index2"));
-
-            searchV2.Index(1_000_000);
+            for (var i = 0; i < 5; i++)
+            {
+                var searchV2 = new MySearchV2(Path.Combine(Environment.CurrentDirectory, $"index1{i}"));
+                searchV2.Index(1_000_000);
+            }
             
+#if false
             searchV2.SearchWithName("롱 소");
             searchV2.SearchWithOption("물리 공격");
             searchV2.SearchWithOptions("힘 증가", "물리 공격력 증가");
@@ -81,6 +96,16 @@
                 ("힘 증가", 10, 20),        // 첫 번째 옵션: 힘 증가, 범위 10~20
                 ("물리 공격력 증가", 5, 15)  // 두 번째 옵션: 물리 공격력 증가, 범위 5~15
             });
+#endif
+        }
+
+        private static void TempFunc3()
+        {
+            for (var i = 0; i < 5; i++)
+            {
+                var search = new MySearchV3(Path.Combine(Environment.CurrentDirectory, $"index2{i}"));
+                search.Index(1_000_000);
+            }
         }
     }
 }

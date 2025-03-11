@@ -62,7 +62,6 @@ public class MySearchV2
         }
 
         _writer.Commit();
-        
         Console.WriteLine($"세팅 종료 \n");
         
         stopwatch.Stop(); // 수행 시간 측정 종료

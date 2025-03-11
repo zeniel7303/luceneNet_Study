@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Text;
 using Lucene.Net.Analysis;
 using Lucene.Net.Analysis.Standard;
@@ -20,7 +21,7 @@ public class MySearch
     private readonly IndexWriter _writer;
     private readonly SearcherManager _searchManager;
     private readonly QueryParser _queryParser;
-    
+
     private static readonly string[] fields = new[] { "name", "option1", "value1", "option2", "value2"};
 
     public MySearch(string indexPath)
@@ -28,12 +29,13 @@ public class MySearch
         _writer = new IndexWriter(FSDirectory.Open(indexPath),
             new IndexWriterConfig(luceneVersion, new StandardAnalyzer(luceneVersion))
             {
-                OpenMode = OpenMode.CREATE
+                OpenMode = OpenMode.CREATE,
+                RAMBufferSizeMB = 256
             });
         _searchManager = new SearcherManager(_writer, true, null);
         _queryParser = new MultiFieldQueryParser(luceneVersion, fields, new StandardAnalyzer(luceneVersion));
     }
-    
+
     public void Index(int num)
     {
         var stopwatch = System.Diagnostics.Stopwatch.StartNew();
@@ -48,11 +50,13 @@ public class MySearch
 
         var counts = new int[items.Length];
         var random = new Random();
+
         for (var i = 0; i < num; i++)
         {
             var index = random.Next(items.Length);
             var item = items[index];
             counts[index]++;
+
             AddDocument($"{i}", item[0], item[1], int.Parse(item[2]), item[3], int.Parse(item[4]));
         }
 
@@ -62,15 +66,14 @@ public class MySearch
         }
 
         _writer.Commit();
-        
-        Console.WriteLine($"세팅 종료 \n");
+        Console.WriteLine($"세팅 종료");
         
         stopwatch.Stop(); // 수행 시간 측정 종료
         Console.WriteLine($"Search execution time: {stopwatch.ElapsedMilliseconds} ms \n");
     }
 
     private void AddDocument(string id, string name, string option1, int value1, string option2, int value2)
-    {
+    { 
         var document = new Document
         {
             new StringField("id", id, Field.Store.YES),
@@ -80,6 +83,7 @@ public class MySearch
             new StringField("option2", option2.Replace(" ", ""), Field.Store.YES),
             new Int64Field("value2", value2, Field.Store.YES)
         };
+
         _writer.AddDocument(document);
     }
 
